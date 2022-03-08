@@ -1,0 +1,43 @@
+{
+  "name": "Save IG Media",
+  "description": "An extension which allows you to save Instagram stories and reels as files.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "512": "/assets/icons/512.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.instagram.com/stories/*"
+      ],
+      "js": [
+        "/stories-script.js"
+      ],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "*://*.instagram.com/reel/*"
+      ],
+      "js": [
+        "/reels-script.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "save": {
+      "suggested_key": {
+        "default": "Alt+Shift+S"
+      },
+      "description": "Saves the reel"
+    }
+  },
+  "permissions": [
+    "activeTab", "downloads"
+  ]
+}
